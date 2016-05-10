@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captain of Fun</title>
+  <style>
+  body {
+    width: 100%;
+    background-color: #424D5A;
+  }
+
+  .capitain-title {
+    -webkit-transform:scale(0.01, 0.01);
+    -moz-transform:scale(0.01, 0.01);
+    transform:scale(0.01, 0.01);
+  }
+
+  .capitain-round-ini {
+    -webkit-transform:scale(0.01, 0.01);
+    -moz-transform:scale(0.01, 0.01);
+    transform:scale(0.01, 0.01);
+  }
+
+  .capitain-title img{
+    width: 90%;
+    display:block;
+    margin:auto;
+  }
+
+  .capitain-round img{
+    display:block;
+    margin:auto;
+  }
+
+  .rotate-animation{
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+
+    -webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    transform:rotate(360deg);
+  }
+
+  .capitain-download {
+    position: fixed;
+    top: 40%;
+    left: 30%;
+    width: 40%;
+    z-index: 10;
+
+  }
+
+  .capitain-download a {
+    visibility: hidden;
+  }
+
+  .show a {
+    visibility: visible;
+  }
+
+  .zoom-animation{
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+
+    -webkit-transform:scale(1, 1);
+    -moz-transform:scale(1, 1);
+    transform:scale(1, 1);
+  }
+
+  .btn {
+  background: #E85A32;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 28px;
+  text-shadow: 1px 1px 3px #000000;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 60px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #F8D800;
+  text-decoration: none;
+}
+
+.bam {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.bam img {
+  width: 100%;
+  height:  calc(100% - 3px);
+}
+  </style>
+</head>
+
+<body>
+  <div class="bam">
+    <img src="bam.jpg"/>
+  </div>
+  <div class="capitain-download">
+    <a id='btn-download' class="btn" target="_blank">Download our presentation</a>
+  </div>
+  <div class="capitain-title">
+    <img src="capitain-title.png" />
+  </div>
+  <div class="capitain-round capitain-round-ini">
+    <img src="capitain-round.png" />
+  </div>
+</body>
+</html>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script>
+$(window).load(function() {
+
+  $(window).keypress(function (event) {
+    if (event.keyCode == '32') {
+      $('.capitain-round').addClass('rotate-animation');
+      setTimeout(function() {
+        $('.capitain-round').removeClass('rotate-animation');
+      }, 1000);
+    }
+  });
+
+  setTimeout(function () {
+    $('.capitain-round').addClass('zoom-animation');
+    setTimeout(function() {
+      $('.capitain-round').removeClass('zoom-animation');
+      $('.capitain-round').removeClass('capitain-round-ini');
+    }, 800);
+    $('.capitain-title').addClass('zoom-animation');
+    $('.capitain-title').addClass('show');
+  }, 500);
+  setTimeout(function () {
+    $('.capitain-download').addClass('show');
+  }, 1400)
+
+  $('.bam').css('height', $(window).height());
+  $('.bam').css('width', $(window).width());
+  $(window).resize(function () {
+    $('.bam').css('height', $(window).height());
+    $('.bam').css('width', $(window).width());
+  });
+
+  $('#btn-download').click(function () {
+    $('.bam').fadeIn(400, function () {
+      setTimeout(function() {
+        $('.bam').fadeOut();
+      }, 500);
+    });
+  })
+});
+</script>
