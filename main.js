@@ -1,39 +1,45 @@
+function fullscreen (elmt) {
+  elmt.css('height', $(window).height());
+  elmt.css('width', $(window).width());
+}
+
 $(window).load(function() {
+  var bam = $('.bam'),
+    capitainRound = $('.capitain-round'),
+    capitainTitle = $('.capitain-title');
 
   $(window).keypress(function (event) {
     if (event.keyCode == '32') {
-      $('.capitain-round').addClass('rotate-animation');
+      capitainRound.addClass('rotate-animation');
       setTimeout(function() {
-        $('.capitain-round').removeClass('rotate-animation');
+        capitainRound.removeClass('rotate-animation');
       }, 1000);
     }
   });
 
   setTimeout(function () {
-    $('.capitain-round').addClass('zoom-animation');
+    capitainRound.addClass('zoom-animation');
     setTimeout(function() {
-      $('.capitain-round').removeClass('zoom-animation');
-      $('.capitain-round').removeClass('capitain-round-ini');
+      capitainRound.removeClass('zoom-animation');
+      capitainRound.removeClass('capitain-round-ini');
     }, 800);
-    $('.capitain-title').addClass('zoom-animation');
-    $('.capitain-title').addClass('show');
+    capitainTitle.addClass('zoom-animation');
+    capitainTitle.addClass('show');
   }, 500);
   setTimeout(function () {
     $('.capitain-download').addClass('show');
-  }, 1400)
+  }, 1400);
 
-  $('.bam').css('height', $(window).height());
-  $('.bam').css('width', $(window).width());
+  fullscreen(bam);
   $(window).resize(function () {
-    $('.bam').css('height', $(window).height());
-    $('.bam').css('width', $(window).width());
+    fullscreen(bam);
   });
 
   $('#btn-download').click(function () {
-    $('.bam').fadeIn(400, function () {
+    bam.fadeIn(400, function () {
       setTimeout(function() {
-        $('.bam').fadeOut();
+        bam.fadeOut();
       }, 500);
     });
-  })
+  });
 });

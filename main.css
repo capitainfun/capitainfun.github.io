@@ -1,5 +1,5 @@
 body {
-  width: 100%;
+  width: calc(100% - 8px);
   background-color: #424D5A;
 }
 
@@ -24,6 +24,7 @@ body {
 .capitain-round img{
   display:block;
   margin:auto;
+  width: 30%;
 }
 
 .rotate-animation{
@@ -46,7 +47,6 @@ body {
   left: 30%;
   width: 40%;
   z-index: 10;
-
 }
 
 .capitain-download a {
@@ -80,9 +80,11 @@ border-radius: 28px;
 text-shadow: 1px 1px 3px #000000;
 font-family: Arial;
 color: #ffffff;
-font-size: 60px;
+font-size: 370%;
 padding: 10px 20px 10px 20px;
 text-decoration: none;
+width: 100%;
+text-align: center;
 }
 
 .btn:hover {
@@ -100,4 +102,15 @@ z-index: 100;
 .bam img {
 width: 100%;
 height:  calc(100% - 3px);
+}
+
+@media (max-width: 600px) {
+  .capitain-download {
+    left: 2%;
+    width: 96%;
+  }
+
+  .btn {
+    font-size: 100%;
+  }
 }
